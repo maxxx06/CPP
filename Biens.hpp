@@ -9,7 +9,13 @@ private:
     int prix;
     std::string adresse_biens;
     int ref_client;
-    int num;   
+    int num;
+
+public:
+    Biens();
+    Biens(int prix, std::string adresse_biens,int ref_client,int num);
+    void create_biens();
+    std::string getadress();
 };
 
 #endif

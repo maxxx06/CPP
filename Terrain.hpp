@@ -2,12 +2,15 @@
 #define TERRAIN_HPP
 
 include <iostream>
+#include "Biens.hpp"
 using namespace std;
 
-class Terrain {
+class Terrain : public Biens {
 private:
     bool constructible;
 
+public:
+    void create_terrain()
 };
 
 #endif
