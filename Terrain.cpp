@@ -5,3 +5,7 @@ using namespace std;
 void Terrain::create_terrain() {
 
 }
+
+void Locaux::vendre_terrain() {
+
+}

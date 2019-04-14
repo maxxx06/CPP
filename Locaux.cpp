@@ -15,3 +15,7 @@ void Locaux::create_locaux() {
         std::cin >> stocker;
     }
 }
+
+void Locaux::vendre_locaux() {
+    
+}

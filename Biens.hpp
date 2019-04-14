@@ -15,6 +15,7 @@ public:
     Biens();
     Biens(int prix, std::string adresse_biens,int ref_client,int num);
     void create_biens();
+    void vendre_biens();
     std::string getadress();
 };
 

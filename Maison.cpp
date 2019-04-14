@@ -22,3 +22,7 @@ void Maison::create_maison() {
         std::cin >> piscine;
     }
 }
+
+void Locaux::vendre_maison() {
+
+}
