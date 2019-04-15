@@ -2,7 +2,7 @@
 #define AGENCE_HPP
 
 #include <iostream>
-#include "Gestion_client.hpp"
+#include "Client.hpp"
 #include "Biens.hpp"
 using namespace std;
 

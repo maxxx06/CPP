@@ -15,6 +15,7 @@ private:
 public:
     Maison(int nb_pieces,bool garage,bool jardin,bool pisicne);
     void create_maison();
+    void vendre_maison();
 
 };
 

@@ -27,9 +27,11 @@ void Maison::create_maison() {
         std::cin >> jardin;
         std::cout << "voulez-vous une piscine ? false/true" << '\n';
         std::cin >> piscine;
+        Maison(nb_pieces,garage,jardin,pisicne);
     }
+
 }
 
-void Locaux::vendre_maison() {
+void Maison::vendre_maison() {
 
 }

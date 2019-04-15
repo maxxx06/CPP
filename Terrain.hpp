@@ -1,7 +1,7 @@
 #ifndef TERRAIN_HPP
 #define TERRAIN_HPP
 
-include <iostream>
+#include <iostream>
 #include "Biens.hpp"
 using namespace std;
 
@@ -10,7 +10,9 @@ private:
     bool constructible;
 
 public:
-    void create_terrain()
+    Terrain(bool constructible);
+    void create_terrain();
+    void vendre_terrain();
 };
 
 #endif
