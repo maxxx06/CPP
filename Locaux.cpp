@@ -2,6 +2,11 @@
 using namespace std;
 #include "Locaux.hpp"
 
+Locaux::Locaux(int m_taille_vitrine, bool m_stocker) {
+  taille_vitrine = m_taille_vitrine;
+  stocker = m_stocker;
+}
+
 void Locaux::create_locaux() {
     int nb;
     int taille;
@@ -17,5 +22,5 @@ void Locaux::create_locaux() {
 }
 
 void Locaux::vendre_locaux() {
-    
+
 }
