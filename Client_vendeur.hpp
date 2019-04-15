@@ -2,11 +2,11 @@
 #define CLIENT_VENDEUR_HPP
 
 #include <iostream>
-#include "Gestion_client.hpp"
+#include "Client.hpp"
 #include "Biens.hpp"
 #include <vector>
 
-class Client_vendeur {
+class Client_vendeur : public Client {
 private:
   std::vector<Biens>liste_biens;
 

@@ -13,6 +13,7 @@ private:
     bool pisicne;
 
 public:
+    Maison(int nb_pieces,bool garage,bool jardin,bool pisicne);
     void create_maison();
 
 };

@@ -15,6 +15,7 @@ private:
     int nb_apparts;
 
 public:
+    Appartement(int nb_pieces,int etage,bool garage,bool cave,bool balcon,int nb_apparts);
     void create_appartement();
     void vendre_appartement();
 };

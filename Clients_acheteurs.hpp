@@ -1,12 +1,12 @@
 #ifndef CLIENTS_ACHETEURS_HPP
 #define CLIENTS_ACHETEURS_HPP
 
-#include "Gestion_client.hpp"
+#include "Client.hpp"
 #include "Biens.hpp"
 #include <map>
 #include <vector>
 
-class Clients_acheteurs : public Gestion_client{
+class Clients_acheteurs : public Client{
 private:
     // int nb_visite;
     // std::string liste_biens;

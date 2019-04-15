@@ -2,6 +2,13 @@
 using namespace std;
 #include "Maison.hpp"
 
+Maison::Maison(int _nb_pieces,bool _garage,bool _jardin,bool _pisicne) {
+    nb_pieces=_nb_pieces;
+    garage=_garage;
+    jardin=_jardin;
+    pisicne=_pisicne;
+}
+
 void Maison::create_maison() {
     int nb;
     int nb_pieces;

@@ -27,9 +27,7 @@ Clients_acheteurs::Clients_acheteurs(bool _proposition_achat,int _prix_achat,map
 
 
 void Clients_acheteurs::ajouter(Biens b) {
-    for (int it=0;it<4;it++) {
-        liste_visite[b.getadress()]=it;
-    }
+    liste_visite[b.getadress()]=0;
 }
 
 void Clients_acheteurs::afficher() {
