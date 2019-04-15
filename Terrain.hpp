@@ -10,6 +10,7 @@ private:
     bool constructible;
 
 public:
+    Terrain();
     Terrain(bool constructible);
     void create_terrain();
     void vendre_terrain();
