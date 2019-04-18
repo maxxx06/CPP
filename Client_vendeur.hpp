@@ -12,9 +12,15 @@ private:
 
 public:
     Client_vendeur();
-    Client_vendeur(std::string nom_client);
-    Client_vendeur(std::string nom_client,std::string adresse_client);
-    Client_vendeur(std::string nom_client,std::string adresse_client,std::vector<Biens>liste_biens);
+    Client_vendeur(std::string,std::string);
+    // Client_vendeur(std::string nom_client);
+    // Client_vendeur(std::string nom_client,std::string adresse_client);
+    // Client_vendeur(std::string nom_client,std::string adresse_client,std::vector<Biens>liste_biens);
+    // void create_client();
+    std::vector<Biens> getListGoods();
+    void virtual affiche();
+    // void add_biens();
+
 };
 
 

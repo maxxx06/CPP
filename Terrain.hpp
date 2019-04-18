@@ -11,9 +11,13 @@ private:
 
 public:
     Terrain();
+    Terrain(int prixx, std::string adress, int ref, int numm);
     Terrain(bool constructible);
-    void create_terrain();
-    void vendre_terrain();
+    // void create_terrain();
+
+    void setConstructible(bool);
+
+    bool getConstructible();
 };
 
 #endif

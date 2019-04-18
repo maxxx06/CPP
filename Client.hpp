@@ -1,8 +1,8 @@
 #ifndef CLIENT_HPP
 #define  CLIENT_HPP
 
-#include "Agence.hpp"
 #include <iostream>
+
 
 class Client {
 protected:
@@ -11,11 +11,16 @@ protected:
 
 public:
     Client();
-    Client(std::string nom_client,std::string adresse_client);
-    void create_client();
+    Client(std::string,std::string);
+    virtual void create_client();
     std::string get_nom_client();
     std::string get_adresse_client();
-    virtual void save_client();
+    void save_client();
+    void virtual affiche();
+    void virtual add_biens();
+
+    void setNom(std::string);
+    void setAdresse(std::string);
 };
 
 

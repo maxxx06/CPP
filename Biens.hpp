@@ -5,7 +5,7 @@
 using namespace std;
 
 class Biens {
-private:
+protected:
     int prix;
     std::string adresse_biens;
     int ref_client;
@@ -14,9 +14,23 @@ private:
 public:
     Biens();
     Biens(int prix, std::string adresse_biens,int ref_client,int num);
-    void create_biens();
-    void vendre_biens();
-    std::string getadress();
+    // Biens virtual create_biens();
+    // void vendre_biens();
+    bool operator <(const Biens& x) const;
+    void virtual affiche();
+
+    void setPrice(int);
+    void setAdress(std::string);
+    void setRef(int);
+    void setNum(int);
+
+    int getPrice();
+    std::string getAdress();
+    int getRef();
+    int getNum();
+
+
+
 };
 
 #endif

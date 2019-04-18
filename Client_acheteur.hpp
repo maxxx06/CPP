@@ -6,22 +6,24 @@
 #include <map>
 #include <vector>
 
-class Client_acheteur : public Client{
+class Client_acheteur : public Client {
 private:
     // int nb_visite;
     // std::string liste_biens;
-    map<std::string,int> liste_visite;
-    bool proposition_achat;
-    int prix_achat;
+    map<Biens,int> map_visites;
+    // bool proposition_achat;
+    // int prix_achat;
 
 public:
     Client_acheteur();
-    Client_acheteur(bool proposition_achat);
-    Client_acheteur(bool proposition_achat,int prix_achat);
-    Client_acheteur(bool proposition_achat,int prix_achat, map<std::string,int> liste_visite);
-    void ajouter(Biens b);
-    void afficher();
-    ~Client_acheteur();
+    Client_acheteur(std::string,std::string);
+    // Client_acheteur(bool proposition_achat);
+    // Client_acheteur(bool proposition_achat,int prix_achat);
+    // Client_acheteur(map<Biens,int> liste_visite);
+    // void create_client();
+    void virtual affiche();
+    std::map<Biens,int> getMapVisites();
+    // void add_biens();
 };
 
 #endif

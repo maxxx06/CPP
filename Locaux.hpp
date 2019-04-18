@@ -11,9 +11,15 @@ private:
     bool stocker;
 
 public:
+    Locaux();
+    Locaux(int prixx, std::string adress, int ref, int numm);
     Locaux(int taille_vitrine,bool stocker);
     void create_locaux();
-    void vendre_locaux();
+
+    void setTailleVitrine(int);
+    int getTaille();
+    void setStocker(bool);
+    bool getStock();
 
 };
 #endif
