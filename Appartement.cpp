@@ -2,7 +2,16 @@
 using namespace std;
 #include "Appartement.hpp"
 
-Appartement::Appartement(){}
+
+// CONSTRUCTEURS //
+
+Appartement::Appartement(){
+  nb_pieces = 0;
+  etage = 0;
+  garage = 0;
+  cave = 0;
+  balcon = 0;
+}
 
 Appartement::Appartement(int prixx, std::string adress, int ref, int numm) : Biens(prixx,adress,ref,numm) {
 
@@ -16,24 +25,7 @@ Appartement::Appartement(int prix, std::string adresse_biens, int num, int ref_c
     balcon=_balcon;
 }
 
-// void Appartement::create_appartement() {
-//     int nb_apparts;
-//     std::cout << "combien d'appartement voulez vous ?" << '\n';
-//     std::cin >> nb_apparts;
-//     for (int i=0;i<=nb_apparts; i++) {
-//         std::cout << "combien de pièces ?" << '\n';
-//         std::cin >> nb_pieces;
-//         std::cout << "A quel étage ?" << '\n';
-//         std::cin >> etage;
-//         std::cout << "voulez-vous un garage ? false/true" << '\n';
-//         std::cin >> garage;
-//         std::cout << "voulez-vous une cave ? false/true" << '\n';
-//         std::cin >> cave;
-//         std::cout << "voulez-vous un balcon ? false/true" << '\n';
-//         std::cin >> balcon;
-//
-//     }
-// }
+// GETTERS AND SETTERS //
 
 
 void Appartement::setNbPieces(int _nb_pieces) {
@@ -74,4 +66,9 @@ bool Appartement::getBalcon(){
 
 int Appartement::getEtage() {
     return etage;
+}
+
+void Appartement::affiche() {
+  cout << "\nBien numéro " << num << " :\n" <<
+  "Adresse : " << adresse << ", prix : " << prix << ", référence client vendeur : " << ref << ", nombre de pièces : " << nb_pieces << ", etage numero : " << etage << ", garage ? " << getGarage() << ", cave ? " << getCave() <<", balcon ? " << getBalcon() <<endl;
 }

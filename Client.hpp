@@ -18,6 +18,7 @@ public:
     void save_client();
     void virtual affiche();
     void virtual add_biens();
+    void virtual delete_biens();
 
     void setNom(std::string);
     void setAdresse(std::string);

@@ -20,12 +20,10 @@ void Client::create_client() {
 }
 
 std::string Client::get_nom_client() {
-    std::cout << nom_client << '\n';
     return nom_client;
 }
 
 std::string Client::get_adresse_client() {
-    std::cout << adresse_client <<'\n';
     return adresse_client;
 }
 
@@ -39,6 +37,10 @@ void Client::affiche() {
 }
 
 void Client::add_biens(){
+
+}
+
+void Client::delete_biens(){
 
 }
 

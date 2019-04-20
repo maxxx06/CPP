@@ -14,16 +14,6 @@ Terrain::Terrain(bool _constructible) {
     constructible = _constructible;
 }
 
-// void Terrain::create_terrain() {
-//     int nb;
-//     std::cout << "combien de locaux voulez vous ?" << '\n';
-//     std::cin >> nb;
-//     for (int i=0;i<=nb; i++) {
-//         std::cout << "voulez-vous un terrain constructibe ? false/true" << '\n';
-//         std::cin >> constructible;
-//     }
-//
-// }
 
 void Terrain::setConstructible(bool _constructible) {
   constructible=_constructible;
@@ -31,4 +21,9 @@ void Terrain::setConstructible(bool _constructible) {
 
 bool Terrain::getConstructible() {
     return constructible;
+}
+
+void Terrain::affiche() {
+  cout << "\nBien numéro " << num << " :\n" <<
+  "Adresse : " << adresse << ", prix : " << prix << ", référence client vendeur : " << ref << "constructible ? :" << getConstructible() << endl;
 }

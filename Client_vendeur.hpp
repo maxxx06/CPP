@@ -8,7 +8,8 @@
 
 class Client_vendeur : public Client {
 private:
-  std::vector<Biens>liste_biens;
+  int ref;
+  std::vector<Biens> liste_biens;
 
 public:
     Client_vendeur();
@@ -19,7 +20,11 @@ public:
     // void create_client();
     std::vector<Biens> getListGoods();
     void virtual affiche();
-    // void add_biens();
+    void add_biens(Biens b);
+    void delete_biens(Biens b);
+
+    void setRef(int);
+    int getRef();
 
 };
 

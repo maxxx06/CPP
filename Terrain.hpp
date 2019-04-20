@@ -15,9 +15,12 @@ public:
     Terrain(bool constructible);
     // void create_terrain();
 
-    void setConstructible(bool);
+    void virtual affiche();
 
+    void setConstructible(bool);
     bool getConstructible();
+
+
 };
 
 #endif

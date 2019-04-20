@@ -18,15 +18,17 @@ public:
     Maison(int nb_pieces,bool garage,bool jardin,bool pisicne);
     // void create_maison();
 
+    void virtual affiche();
+
     void setNbPieces(int);
     void setGarage(bool);
     void setJardin(bool);
     void setPiscine(bool);
 
     int getNbPieces();
-    bool getGarage();
     bool getJardin();
     bool getPiscine();
+    bool getGarage();
 
 };
 

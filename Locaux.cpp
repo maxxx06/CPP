@@ -2,6 +2,14 @@
 using namespace std;
 #include "Locaux.hpp"
 
+
+// CONSTRUCTEURS //
+
+Locaux::Locaux() {
+  taille_vitrine = 0;
+  stocker = 0;
+}
+
 Locaux::Locaux(int prixx, std::string adress, int ref, int numm) : Biens(prixx,adress,ref, numm) {
 
 }
@@ -11,33 +19,26 @@ Locaux::Locaux(int m_taille_vitrine, bool m_stocker) {
     stocker = m_stocker;
 }
 
-void Locaux::create_locaux() {
-    int nb;
-
-    std::cout << "combien de locaux voulez vous ?" << '\n';
-    std::cin >> nb;
-    for (int i=0;i<=nb; i++) {
-        std::cout << "quelle taille vitrine ?" << '\n';
-        std::cin >> taille_vitrine;
-        std::cout << "voulez-vous une piece pour stocker ? false/true" << '\n';
-        std::cin >> stocker;
-    }
-
-}
+// GETTERS AND SETTERS //
 
 
 void Locaux::setTailleVitrine(int _taille) {
   taille_vitrine=_taille;
 }
 
-int Locaux::getTaille() {
-    return taille_vitrine;
-}
-
 void Locaux::setStocker(bool _stocker) {
   stocker=_stocker;
 }
 
+int Locaux::getTaille() {
+    return taille_vitrine;
+}
+
 bool Locaux::getStock() {
     return stocker;
+}
+
+void Locaux::affiche() {
+  cout << "\nBien numéro " << num << " :\n" <<
+  "Adresse : " << adresse << ", prix : " << prix << ", référence client vendeur : " << ref << ", Taille de la vitrine : " << taille_vitrine << ",piece pour stocker ? : " << getStock() << endl;
 }

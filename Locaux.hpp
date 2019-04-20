@@ -14,12 +14,13 @@ public:
     Locaux();
     Locaux(int prixx, std::string adress, int ref, int numm);
     Locaux(int taille_vitrine,bool stocker);
-    void create_locaux();
+
+    void virtual affiche();
 
     void setTailleVitrine(int);
-    int getTaille();
     void setStocker(bool);
-    bool getStock();
 
+    bool getStock();
+    int getTaille();
 };
 #endif

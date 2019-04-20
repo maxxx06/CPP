@@ -7,16 +7,17 @@ using namespace std;
 class Biens {
 protected:
     int prix;
-    std::string adresse_biens;
-    int ref_client;
+    std::string adresse;
+    int ref;
     int num;
 
 public:
     Biens();
-    Biens(int prix, std::string adresse_biens,int ref_client,int num);
+    Biens(int prix, std::string adresse, int ref, int num);
     // Biens virtual create_biens();
     // void vendre_biens();
-    bool operator <(const Biens& x) const;
+    bool operator <(const Biens&) const;
+    bool operator ==(const Biens&) const;
     void virtual affiche();
 
     void setPrice(int);
@@ -28,8 +29,6 @@ public:
     std::string getAdress();
     int getRef();
     int getNum();
-
-
 
 };
 

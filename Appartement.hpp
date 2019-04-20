@@ -19,12 +19,13 @@ public:
     Appartement(int prix, std::string adresse_biens, int num, int ref_client,int nb_pieces,int etage,bool garage,bool cave,bool balcon);
     // void create_appartement();
 
+    void virtual affiche();
+
     void setNbPieces(int);
     void setEtage(int);
     void setGarage(bool);
     void setCave(bool);
     void setBalcon(bool);
-
     int getNbPieces();
     bool getGarage();
     bool getCave();

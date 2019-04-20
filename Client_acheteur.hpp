@@ -17,13 +17,16 @@ private:
 public:
     Client_acheteur();
     Client_acheteur(std::string,std::string);
+    void addProposal(Biens);
     // Client_acheteur(bool proposition_achat);
     // Client_acheteur(bool proposition_achat,int prix_achat);
     // Client_acheteur(map<Biens,int> liste_visite);
     // void create_client();
     void virtual affiche();
     std::map<Biens,int> getMapVisites();
-    // void add_biens();
+
+    void add_biens(Biens b);
+    void delete_biens(Biens b);
 };
 
 #endif
