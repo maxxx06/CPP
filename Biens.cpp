@@ -1,10 +1,12 @@
 #include <iostream>
 using namespace std;
+#include "Client_vendeur.hpp"
 #include "Biens.hpp"
 #include "Locaux.hpp"
 #include "Maison.hpp"
 #include "Appartement.hpp"
 #include "Terrain.hpp"
+#include <fstream>
 
 // CONSTRUCTEURS //
 
@@ -40,19 +42,19 @@ void Biens::setNum(int _num) {
   num=_num;
 }
 
-int Biens::getPrice() {
+int Biens::getPrice() const {
   return prix;
 }
 
-std::string Biens::getAdress() {
+std::string Biens::getAdress() const {
   return adresse;
 }
 
-int Biens::getRef() {
+int Biens::getRef() const {
   return ref;
 }
 
-int Biens::getNum() {
+int Biens::getNum() const {
   return num;
 }
 
@@ -69,6 +71,30 @@ bool Biens::operator ==(const Biens& x) const {
 // AFFICHAGE //
 
 void Biens::affiche() {
-  cout << "\nBien numéro " << num << " :\n" <<
+  cout << "Bien numéro " << num << " :\n" <<
   "Adresse : " << adresse << ", prix : " << prix << ", référence client vendeur : " << ref << endl;
+
+}
+
+// SAUVEGARDE //
+//
+void Biens::save(std::ofstream &f) {
+    f << "prix  : " << prix << endl;
+    f << "adresse : " << adresse << endl;
+    f << "reference du bien : "<< ref << endl;
+    f << "numero :" << num << endl;
+}
+
+void Biens::saveForAcheteurs(std::ofstream &f){
+    f << this.save(f) << endl;
+    f << "reference du vendeur : " << getVendeurRef()<< endl;
+
+}
+
+
+int Biens::getVendeurRef(){
+    std::shared_ptr<Client_vendeur> partageNom; // declaration d'un pointeur qui partagel'objet sur lequel il pointe
+    if(partageNom) {
+        return partageNom->getRef();
+    }
 }

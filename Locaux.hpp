@@ -15,12 +15,15 @@ public:
     Locaux(int prixx, std::string adress, int ref, int numm);
     Locaux(int taille_vitrine,bool stocker);
 
-    void virtual affiche();
+    void save_locaux();
 
     void setTailleVitrine(int);
     void setStocker(bool);
 
-    bool getStock();
-    int getTaille();
+    void virtual save(std::ofstream &f);
+
+    int getTaille() const;
+    bool getStock() const;
+
 };
 #endif

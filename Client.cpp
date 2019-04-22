@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 #include "Client.hpp"
+#include <fstream>
 
 Client::Client() {
     nom_client="Unknown";
@@ -12,11 +13,8 @@ Client::Client(std::string _nom_client, std::string _adresse_client) {
   adresse_client=_adresse_client;
 }
 
-void Client::create_client() {
-    std::cout << "Le nom du client ?" << '\n';
-    std::cin >> nom_client;
-    std::cout << "adresse du client ?" << '\n';
-    std::cin >> adresse_client;
+bool Client::operator ==(const Client& x) const{
+  return nom_client==x.nom_client;
 }
 
 std::string Client::get_nom_client() {
@@ -25,11 +23,6 @@ std::string Client::get_nom_client() {
 
 std::string Client::get_adresse_client() {
     return adresse_client;
-}
-
-void Client::save_client() {
-    get_nom_client();
-    get_adresse_client();
 }
 
 void Client::affiche() {
@@ -50,4 +43,9 @@ void Client::setNom(std::string _nom) {
 
 void Client::setAdresse(std::string _adresse) {
   adresse_client=_adresse;
+}
+
+void Client::save(std::ofstream &f) {
+    f << "Le nom du client est :" << get_nom_client() << endl;
+    f <<"L'adresse du client est :"<< get_adresse_client() << endl;
 }

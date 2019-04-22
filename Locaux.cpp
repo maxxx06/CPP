@@ -19,6 +19,7 @@ Locaux::Locaux(int m_taille_vitrine, bool m_stocker) {
     stocker = m_stocker;
 }
 
+
 // GETTERS AND SETTERS //
 
 
@@ -30,15 +31,28 @@ void Locaux::setStocker(bool _stocker) {
   stocker=_stocker;
 }
 
-int Locaux::getTaille() {
+int Locaux::getTaille() const {
     return taille_vitrine;
 }
 
-bool Locaux::getStock() {
+bool Locaux::getStock() const {
     return stocker;
 }
 
-void Locaux::affiche() {
-  cout << "\nBien numéro " << num << " :\n" <<
-  "Adresse : " << adresse << ", prix : " << prix << ", référence client vendeur : " << ref << ", Taille de la vitrine : " << taille_vitrine << ",piece pour stocker ? : " << getStock() << endl;
+// SAUVEGARDE //
+
+void Locaux::save(std::ofstream &f) {
+    Biens::save(f);
+    f << "Local \n";
+    f << "taille vitrine :" <<taille_vitrine << endl;
+    f << "piece pour stocker :" << stocker << endl;
+
+
 }
+
+// void Locaux::save_locaux() {
+//     std::ofstream ofs=Biens::save();
+//     ofs << "taille_vitrine" << taille_vitrine << endl;
+//     ofs << "stocker " << stocker << endl;
+//     ofs <<"type de biens "<< "l" << endl;
+// }

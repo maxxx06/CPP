@@ -8,25 +8,27 @@
 
 class Client_acheteur : public Client {
 private:
-    // int nb_visite;
-    // std::string liste_biens;
-    map<Biens,int> map_visites;
-    // bool proposition_achat;
-    // int prix_achat;
+
+    map<Biens*,int> map_proposal;
+    map<Biens*,int> map_visites;
+
 
 public:
     Client_acheteur();
     Client_acheteur(std::string,std::string);
-    void addProposal(Biens);
-    // Client_acheteur(bool proposition_achat);
-    // Client_acheteur(bool proposition_achat,int prix_achat);
-    // Client_acheteur(map<Biens,int> liste_visite);
-    // void create_client();
-    void virtual affiche();
-    std::map<Biens,int> getMapVisites();
 
-    void add_biens(Biens b);
-    void delete_biens(Biens b);
+    void save_acheteurs();
+
+
+    void addProposal(Biens*);
+    void addVisite(Biens*);
+
+    void virtual affiche();
+    void virtual save(std::ofstream &f);
+    std::map<Biens*,int> getMapProposal();
+
+    void add_biens(Biens *b);
+    void delete_biens(Biens *b);
 };
 
 #endif

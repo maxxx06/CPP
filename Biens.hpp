@@ -1,11 +1,14 @@
 #ifndef  BIENS_HPP
 #define BIENS_HPP
 
+#include <fstream>
 #include <iostream>
+#include <algorithm>
+#include <typeinfo>
 using namespace std;
 
 class Biens {
-protected:
+public:
     int prix;
     std::string adresse;
     int ref;
@@ -13,22 +16,29 @@ protected:
 
 public:
     Biens();
-    Biens(int prix, std::string adresse, int ref, int num);
-    // Biens virtual create_biens();
-    // void vendre_biens();
+    Biens(int, std::string, int, int);
+
     bool operator <(const Biens&) const;
     bool operator ==(const Biens&) const;
-    void virtual affiche();
+    // int virtual save();
+    void virtual save(std::ofstream &f);
+    void saveForAcheteurs(std::ofstream &f);
+    int getVendeurRef();
+    // void virtual save();
 
     void setPrice(int);
     void setAdress(std::string);
     void setRef(int);
     void setNum(int);
 
-    int getPrice();
-    std::string getAdress();
-    int getRef();
-    int getNum();
+    int getPrice() const;
+    std::string getAdress() const;
+    int getRef() const;
+    int getNum() const;
+
+    void virtual affiche();
+
+
 
 };
 

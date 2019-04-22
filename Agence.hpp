@@ -20,41 +20,42 @@ class Agence {
 
 
 protected:
-    std::map<Biens,std::vector<Client_acheteur> >goods_map;
+    std::map<Biens*,std::vector<Client_acheteur> >goods_map;
     std::vector<Client_vendeur*>sellers;
     std::vector<Client_acheteur*>buyers;
 
 public:
     Agence();
 
-    Biens idGood();
-    void idTerrain(Biens);
-    void idMaison(Biens);
-    void idFlat(Biens);
-    void idLocaux(Biens);
+    Biens* idGood();
+    Terrain* idTerrain(Biens*);
+    Maison* idMaison(Biens*);
+    Appartement* idFlat(Biens*);
+    Locaux* idLocaux(Biens*);
     void addOneGood();
     void addGoods();
 
     void idClients(Client*);
     void addClients();
     void addBuyers();
+    void proposal();
+    void visite();
     void addSellers();
-    void deleteClient(Client_acheteur);
+
+    void sellGoods();
+
+    Biens* searchGood();
+
+    void virtual afficheClients();
+    void afficheGoods();
     void recherche();
+    void save();
+
+
     void load_fichier();
     void load_biens();
     void load_acheteurs();
     void load_vendeurs();
-
-    void sellGoods();
-
-    Biens searchGood();
-    Client_vendeur searchSeller(Biens);
-    Client_acheteur searchBuyer(Biens);
-
-
-    void virtual afficheClients();
-    void afficheGoods();
 
 };
 #endif

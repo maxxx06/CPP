@@ -12,13 +12,17 @@ protected:
 public:
     Client();
     Client(std::string,std::string);
-    virtual void create_client();
+
+    bool virtual operator ==(const Client&) const;
+
+
     std::string get_nom_client();
     std::string get_adresse_client();
-    void save_client();
+
     void virtual affiche();
     void virtual add_biens();
     void virtual delete_biens();
+    void virtual save(std::ofstream &f);
 
     void setNom(std::string);
     void setAdresse(std::string);

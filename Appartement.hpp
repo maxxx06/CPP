@@ -17,20 +17,24 @@ public:
     Appartement();
     Appartement(int prixx, std::string adress, int ref, int numm);
     Appartement(int prix, std::string adresse_biens, int num, int ref_client,int nb_pieces,int etage,bool garage,bool cave,bool balcon);
-    // void create_appartement();
+    Appartement(const Appartement&);
+    // Appartement(const Biens &source);
 
-    void virtual affiche();
+    void virtual save(std::ofstream &f);
 
     void setNbPieces(int);
     void setEtage(int);
     void setGarage(bool);
     void setCave(bool);
     void setBalcon(bool);
-    int getNbPieces();
-    bool getGarage();
-    bool getCave();
-    bool getBalcon();
-    int getEtage();
+
+    void affiche();
+
+    int getNbPieces() const;
+    bool getGarage() const;
+    bool getCave() const;
+    bool getBalcon() const;
+    int getEtage() const;
 };
 
 

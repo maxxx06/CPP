@@ -1,0 +1,21 @@
+prix  : 5
+adresse : lyon
+reference du bien : 34
+numero :2
+Maison
+nombre de pièces :8
+garage :1
+jardin :0
+piscine :0
+
+prix  : 34444
+adresse : cacaca
+reference du bien : 21
+numero :3
+Appartement 
+nombre de pièces 2
+etage 3
+garage 1
+cave 1
+balcon 0
+

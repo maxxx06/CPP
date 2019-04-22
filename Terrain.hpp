@@ -13,13 +13,12 @@ public:
     Terrain();
     Terrain(int prixx, std::string adress, int ref, int numm);
     Terrain(bool constructible);
-    // void create_terrain();
 
-    void virtual affiche();
-
+    void save_terrain();
+void virtual save(std::ofstream &f) ;
     void setConstructible(bool);
-    bool getConstructible();
 
+    bool getConstructible();
 
 };
 

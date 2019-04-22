@@ -2,6 +2,9 @@
 using namespace std;
 #include "Terrain.hpp"
 
+
+// CONSTRUCTEURS //
+
 Terrain::Terrain() {
 
 }
@@ -15,6 +18,8 @@ Terrain::Terrain(bool _constructible) {
 }
 
 
+// GETTERS ET SETTERS
+
 void Terrain::setConstructible(bool _constructible) {
   constructible=_constructible;
 }
@@ -23,7 +28,19 @@ bool Terrain::getConstructible() {
     return constructible;
 }
 
-void Terrain::affiche() {
-  cout << "\nBien numéro " << num << " :\n" <<
-  "Adresse : " << adresse << ", prix : " << prix << ", référence client vendeur : " << ref << "constructible ? :" << getConstructible() << endl;
+
+// SAUVEGARDE //
+
+void Terrain::save(std::ofstream &f) {
+    Biens::save(f);
+    f << "Terrain \n";
+    f << "Constructible ? :" <<constructible << endl;
+
+
 }
+
+// void Terrain::save_terrain() {
+//     std::ofstream ofs=Biens::save();
+//     ofs << "constructible " << constructible << endl;
+//     ofs <<"type de biens "<< "t" << endl;
+// }
