@@ -67,7 +67,8 @@ void Client_acheteur::affiche(){
 void Client_acheteur::save(std::ofstream &f) {
     Client::save(f);
     f<<"acheteurs\n"<<endl;
-    for (auto& first: map_visites) {
-        first->Biens::saveForAcheteurs(f);
+    for (auto& [first,second] : map_visites) {
+        first->saveForAcheteurs(f);
+        f << endl;
    }
 }

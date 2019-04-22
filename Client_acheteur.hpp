@@ -27,6 +27,9 @@ public:
     void virtual save(std::ofstream &f);
     std::map<Biens*,int> getMapProposal();
 
+
+
+
     void add_biens(Biens *b);
     void delete_biens(Biens *b);
 };

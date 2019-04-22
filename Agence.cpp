@@ -38,7 +38,7 @@ Terrain* Agence::idTerrain(Biens *b) {
   Terrain *good = new Terrain(b->getPrice(), b->getAdress(), b->getRef(),
   b->getNum());
 
-  std::cout << "Le terrain est-il constructible ? false/true" << '\n';
+  std::cout << "Le terrain est-il constructible ? 0 --> non, 1 --> oui" << '\n';
   std::cin >> constructible;
   good->setConstructible(constructible);
 
@@ -55,13 +55,13 @@ Maison* Agence::idMaison(Biens *b) {
   std::cout << "combien de pièces ?" << '\n';
   std::cin >> nb_pieces;
   good->setNbPieces(nb_pieces);
-  std::cout << "voulez-vous un garage ? false/true" << '\n';
+  std::cout << "voulez-vous un garage ? 0 --> non, 1 --> oui" << '\n';
   std::cin >> garage;
   good->setGarage(nb_pieces);
-  std::cout << "voulez-vous un jardin ? false/true" << '\n';
+  std::cout << "voulez-vous un jardin ? 0 --> non, 1 --> oui" << '\n';
   std::cin >> jardin;
   good->setJardin(jardin);
-  std::cout << "voulez-vous une piscine ? false/true" << '\n';
+  std::cout << "voulez-vous une piscine ? 0 --> non, 1 --> oui" << '\n';
   std::cin >> piscine;
   good->setPiscine(piscine);
 
@@ -78,7 +78,7 @@ Locaux* Agence::idLocaux(Biens *b) {
   std::cout << "quelle taille vitrine ?" << '\n';
   std::cin >> taille_vitrine;
   good->setTailleVitrine(taille_vitrine);
-  std::cout << "voulez-vous une piece pour stocker ? false/true" << '\n';
+  std::cout << "voulez-vous une piece pour stocker ? 0 --> non, 1 --> oui" << '\n';
   std::cin >> stocker;
   good->setStocker(stocker);
 
@@ -99,13 +99,13 @@ Appartement* Agence::idFlat(Biens *b) {
   std::cout << "A quel étage ?" << '\n';
   std::cin >> etage;
   good->setEtage(etage);
-  std::cout << "voulez-vous un garage ? false/true" << '\n';
+  std::cout << "voulez-vous un garage ? 0 --> non, 1 --> oui" << '\n';
   std::cin >> garage;
   good->setGarage(garage);
-  std::cout << "voulez-vous une cave ? false/true" << '\n';
+  std::cout << "voulez-vous une cave ? 0 --> non, 1 --> oui" << '\n';
   std::cin >> cave;
   good->setCave(cave);
-  std::cout << "voulez-vous un balcon ? false/true" << '\n';
+  std::cout << "voulez-vous un balcon ? 0 --> non, 1 --> oui" << '\n';
   std::cin >> balcon;
   good->setBalcon(balcon);
 

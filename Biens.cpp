@@ -81,20 +81,21 @@ void Biens::affiche() {
 void Biens::save(std::ofstream &f) {
     f << "prix  : " << prix << endl;
     f << "adresse : " << adresse << endl;
-    f << "reference du bien : "<< ref << endl;
+    f << "reference du client : "<< ref << endl;
     f << "numero :" << num << endl;
 }
 
+
 void Biens::saveForAcheteurs(std::ofstream &f){
-    f << this.save(f) << endl;
-    f << "reference du vendeur : " << getVendeurRef()<< endl;
+    this->save(f);
+    f << "reference du vendeur : " << getRef()<< endl;
 
 }
 
 
-int Biens::getVendeurRef(){
-    std::shared_ptr<Client_vendeur> partageNom; // declaration d'un pointeur qui partagel'objet sur lequel il pointe
-    if(partageNom) {
-        return partageNom->getRef();
-    }
-}
+// int Biens::getVendeurRef(){
+//     std::shared_ptr<Client_vendeur> partageNom; // declaration d'un pointeur qui partagel'objet sur lequel il pointe
+//     if(partageNom) {
+//         return partageNom->getRef();
+//     }
+// }

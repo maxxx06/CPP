@@ -22,9 +22,11 @@ public:
     bool operator ==(const Biens&) const;
     // int virtual save();
     void virtual save(std::ofstream &f);
-    void saveForAcheteurs(std::ofstream &f);
-    int getVendeurRef();
     // void virtual save();
+
+    void saveForAcheteurs(std::ofstream &f);
+
+    int getVendeurRef();
 
     void setPrice(int);
     void setAdress(std::string);
