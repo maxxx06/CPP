@@ -2,7 +2,7 @@
 #define  CLIENT_HPP
 
 #include <iostream>
-
+#include "Biens.hpp"
 
 class Client {
 protected:
@@ -20,8 +20,8 @@ public:
     std::string get_adresse_client();
 
     void virtual affiche();
-    void virtual add_biens();
-    void virtual delete_biens();
+    void virtual add_biens(Biens*)=0;
+    void virtual delete_biens(Biens*)=0;
     void virtual save(std::ofstream &f);
 
     void setNom(std::string);

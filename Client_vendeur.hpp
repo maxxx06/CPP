@@ -14,6 +14,7 @@ private:
 public:
     Client_vendeur();
     Client_vendeur(std::string,std::string);
+    ~Client_vendeur();
 
     void add_biens(Biens *b);
     void delete_biens(Biens *b);

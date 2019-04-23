@@ -14,6 +14,12 @@ Client_acheteur::Client_acheteur() : Client() {
 Client_acheteur::Client_acheteur(std::string _nom_client, std::string _adresse_client) : Client(_nom_client, _adresse_client) {
 }
 
+// DESTRUCTEUR //
+
+Client_acheteur::~Client_acheteur() {
+  map_proposal.clear();
+  map_visites.clear();
+}
 
 
 // MODIFICATION DES ATTRIBUTS (maps)
@@ -52,11 +58,19 @@ void Client_acheteur::affiche(){
   Client::affiche();
   cout << "Liste des biens, de leurs visites et leurs propositions d'achat:\n" << endl;
   std::map<Biens*,int>::iterator iter;
-  for (iter = map_proposal.begin(); iter != map_proposal.end(); iter++) {
+  std::map<Biens*,int>::iterator iter2;
+  for (iter = map_visites.begin(); iter != map_visites.end(); iter++) {
     auto courant=iter->first;
     if(iter->second!=0){
       courant->affiche();
-      cout << "Proposition d'achat : " << iter->second << endl;
+      cout << "Nombre de visites : " << iter->second << endl;
+      for(iter2=map_proposal.begin();iter2!=map_proposal.end();iter2++){
+        auto courant2=iter2->first;
+        if(iter2->second!=0 && courant==courant2){
+          cout << "Proposition d'achat : " << iter2->second << endl;
+          break;
+        }
+      }
     }
   }
 }
@@ -67,7 +81,7 @@ void Client_acheteur::affiche(){
 void Client_acheteur::save(std::ofstream &f) {
     Client::save(f);
     f<<"acheteurs\n"<<endl;
-    for (auto& [first,second] : map_visites) {
+    for (auto& [first,second] : map_visites) { // map visite est un conteneur qui prends comme clé une pointeur de biens et en valeur le nombree de visite
         first->saveForAcheteurs(f);
         f << endl;
    }

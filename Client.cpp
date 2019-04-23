@@ -29,14 +29,6 @@ void Client::affiche() {
     cout << "Nom : " << nom_client << ", adresse : " << adresse_client << endl;
 }
 
-void Client::add_biens(){
-
-}
-
-void Client::delete_biens(){
-
-}
-
 void Client::setNom(std::string _nom) {
   nom_client=_nom;
 }

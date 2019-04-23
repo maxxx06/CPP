@@ -1,10 +1,13 @@
 #ifndef  BIENS_HPP
 #define BIENS_HPP
 
+#include "Utils.h"
 #include <fstream>
 #include <iostream>
 #include <algorithm>
 #include <typeinfo>
+#include <map>
+#include <vector>
 using namespace std;
 
 class Biens {

@@ -26,6 +26,7 @@ protected:
 
 public:
     Agence();
+    ~Agence();
 
     Biens* idGood();
     Terrain* idTerrain(Biens*);

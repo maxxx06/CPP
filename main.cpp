@@ -3,21 +3,9 @@ using namespace std;
 #include "Client_acheteur.hpp"
 #include "Biens.hpp"
 #include "Agence.hpp"
-#include <limits>
 
 
-int getInt() {
-    int value;
-    cin >> value;
-    cin.ignore();
-    if (cin.fail()) {
-        cout << "Ceci n'est pas un entier ..." << endl;
-        cin.clear();
-        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        return getInt();
-    }
-    return value;
-}
+
  void menu() {
   std::cout << "##### MENU #####" << '\n';
   std::cout << "-----------------" << '\n';

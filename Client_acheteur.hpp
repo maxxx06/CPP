@@ -16,6 +16,7 @@ private:
 public:
     Client_acheteur();
     Client_acheteur(std::string,std::string);
+    ~Client_acheteur();
 
     void save_acheteurs();
 

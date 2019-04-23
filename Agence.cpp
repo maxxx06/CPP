@@ -5,7 +5,7 @@ using namespace std;
 #include "Appartement.hpp"
 #include <iterator>
 #include <fstream>
-
+#include "Utils.h"
 static int numm=0;
 
 // CONSTRUCTEUR //
@@ -14,19 +14,43 @@ Agence::Agence(){
 
 }
 
+
+// DESTRUCTEUR //
+
+Agence::~Agence() {
+    goods_map.clear();
+    buyers.clear();
+    sellers.clear();
+}
+
 // CREATION DES DIFFERENTS BIENS //
 
 Biens* Agence::idGood() {
   std::string adress;
   int ref;
   int prixx;
+  int ok = 0;
 
   std::cout << "Quelle est l'adresse ?" << '\n';
   std::cin >> adress;
-  std::cout << "Quelle est la référence ?" << '\n';
-  std::cin >> ref;
+  while(ok==0){
+    std::cout << "Quelle est la référence ?" << '\n';
+    ref=getInt();
+
+    for(int i=0;i<sellers.size();i++){
+      if(ref==sellers[i]->getRef()) {
+        ok=1;
+        break;
+      }
+    }
+    if(ok==0){
+      std::cout << "Référence correspondant à aucun vendeur. Réessayez." << '\n';
+    }
+  }
+
   std::cout << "Quel est le prix ?" << '\n';
-  std::cin >> prixx;
+  prixx=getInt();
+
   numm++;
   Biens *good = new Biens(prixx,adress,ref,numm);
   return good;
@@ -39,7 +63,7 @@ Terrain* Agence::idTerrain(Biens *b) {
   b->getNum());
 
   std::cout << "Le terrain est-il constructible ? 0 --> non, 1 --> oui" << '\n';
-  std::cin >> constructible;
+  constructible=getTrueBool();
   good->setConstructible(constructible);
 
   return good;
@@ -53,16 +77,16 @@ Maison* Agence::idMaison(Biens *b) {
   b->getNum());
 
   std::cout << "combien de pièces ?" << '\n';
-  std::cin >> nb_pieces;
+  nb_pieces=getInt();
   good->setNbPieces(nb_pieces);
   std::cout << "voulez-vous un garage ? 0 --> non, 1 --> oui" << '\n';
-  std::cin >> garage;
+  garage=getTrueBool();
   good->setGarage(nb_pieces);
   std::cout << "voulez-vous un jardin ? 0 --> non, 1 --> oui" << '\n';
-  std::cin >> jardin;
+  jardin=getTrueBool();
   good->setJardin(jardin);
   std::cout << "voulez-vous une piscine ? 0 --> non, 1 --> oui" << '\n';
-  std::cin >> piscine;
+  piscine=getTrueBool();
   good->setPiscine(piscine);
 
   return good;
@@ -76,10 +100,10 @@ Locaux* Agence::idLocaux(Biens *b) {
   b->getNum());
 
   std::cout << "quelle taille vitrine ?" << '\n';
-  std::cin >> taille_vitrine;
+  taille_vitrine=getInt();
   good->setTailleVitrine(taille_vitrine);
   std::cout << "voulez-vous une piece pour stocker ? 0 --> non, 1 --> oui" << '\n';
-  std::cin >> stocker;
+  stocker=getTrueBool();
   good->setStocker(stocker);
 
   return good;
@@ -94,19 +118,19 @@ Appartement* Agence::idFlat(Biens *b) {
   b->getNum());
 
   std::cout << "combien de pièces ?" << '\n';
-  std::cin >> nb_pieces;
+  nb_pieces=getInt();
   good->setNbPieces(nb_pieces);
   std::cout << "A quel étage ?" << '\n';
-  std::cin >> etage;
+  etage=getInt();
   good->setEtage(etage);
   std::cout << "voulez-vous un garage ? 0 --> non, 1 --> oui" << '\n';
-  std::cin >> garage;
+  garage=getTrueBool();
   good->setGarage(garage);
   std::cout << "voulez-vous une cave ? 0 --> non, 1 --> oui" << '\n';
-  std::cin >> cave;
+  cave=getTrueBool();
   good->setCave(cave);
   std::cout << "voulez-vous un balcon ? 0 --> non, 1 --> oui" << '\n';
-  std::cin >> balcon;
+  balcon=getTrueBool();
   good->setBalcon(balcon);
 
   return good;
@@ -118,10 +142,20 @@ Appartement* Agence::idFlat(Biens *b) {
 void Agence::addOneGood(){
   int type;
   std::string nom;
+  int ok=0;
 
+  while(ok==0){
       std::cout << "Quel type de biens ?" << '\n';
       std::cout << "1: Locaux \n2: Maison \n3: Terrain \n4: Appartement" << '\n';
-  std::cin >> type;
+      type=getInt();
+      if(type>0 && type<5){
+        ok=1;
+      }
+      else{
+        std::cout << "Veuillez entrer un chiffre entre 1 et 4." << '\n';
+      }
+    }
+
 
   Biens *good = idGood();
   Maison *goodMaison;
@@ -181,7 +215,7 @@ void Agence::addGoods() {
   int nb;
 
   std::cout << "Combien voulez-vous ajouter de biens ?" << '\n';
-  std::cin >> nb;
+  nb=getInt();
 
   for(int i = 0; i < nb; i++) {
     addOneGood();
@@ -206,11 +240,21 @@ void Agence::idClients(Client *c) {
 void Agence::addClients(){
   std::string choix;
   int nb;
+  int ok=0;
 
-  std::cout << "Voulez-vous ajouter des acheteurs ou des vendeurs ? a/v" << '\n';
-  std::cin >> choix;
+  while(ok==0){
+    std::cout << "Voulez-vous ajouter des acheteurs ou des vendeurs ? a/v" << '\n';
+    std::cin >> choix;
+    if(choix=="a" || choix=="v"){
+      ok=1;
+    }
+    else{
+      std::cout << "Veuillez entrer a pour acheteur, et v pour vendeur." << '\n';
+    }
+  }
+
   std::cout << "Combien voulez-vous en ajouter ?" << '\n';
-  std::cin >> nb;
+  nb=getInt();
   if(choix=="a") {
     for(int i = 0; i<nb; i++){
       addBuyers();
@@ -226,11 +270,13 @@ void Agence::addClients(){
 void Agence::addBuyers() {
   Client_acheteur *idv = new Client_acheteur();
   idClients(idv);
-  buyers.__emplace_back(idv);
+  buyers.emplace_back(idv);
 
 }
 
 void Agence::proposal(){
+  bool loop=0;
+  while(loop==0){
     std::string nom;
     std::cout << "Quel est le nom de l'acheteur ?" << '\n';
     std::cin >> nom;
@@ -239,21 +285,33 @@ void Agence::proposal(){
     for(int i = 0;i<buyers.size();i++){
       if(buyers[i]->get_nom_client()==nom){
         buyers[i]->addProposal(courant);
-        goods_map[courant].__emplace_back(*buyers[i]);
+        goods_map[courant].emplace_back(*buyers[i]);
+        loop=1;
+      }
+      else{
+        std::cout << "Acheteur non trouvé. Réessayez" << '\n';
       }
     }
+  }
 }
 
 void Agence::visite(){
-  std::string nom;
-  std::cout << "Quel est le nom de l'acheteur ?" << '\n';
-  std::cin >> nom;
-  Biens *good = searchGood();
-  for(int i = 0;i<buyers.size();i++){
-    if(buyers[i]->get_nom_client()==nom){
-      buyers[i]->addVisite(good);
-}
-}
+  bool loop=0;
+  while(loop==0){
+    std::string nom;
+    std::cout << "Quel est le nom de l'acheteur ?" << '\n';
+    std::cin >> nom;
+    Biens *good = searchGood();
+    for(int i = 0;i<buyers.size();i++){
+      if(buyers[i]->get_nom_client()==nom){
+        buyers[i]->addVisite(good);
+        loop=1;
+      }
+      else {
+        std::cout << "Acheteur non trouvé. Réessayez" << '\n';
+      }
+    }
+  }
 }
 
 void Agence::addSellers() {
@@ -261,9 +319,9 @@ void Agence::addSellers() {
   Client_vendeur *idv = new Client_vendeur();
   idClients(idv);
   cout << "Quel est son numéro référence ?" << endl;
-  cin >> ref;
+  ref=getInt();
   idv->setRef(ref);
-  sellers.__emplace_back(idv);
+  sellers.emplace_back(idv);
 }
 
 // VENTE DE BIENS //
@@ -307,7 +365,7 @@ void Agence::sellGoods() {
     goods_map.erase(courant);
 
     std::cout << "D'autres biens ont-ils été vendus ? 0 --> non, 1 --> oui" << '\n';
-    std::cin >> loop;
+    loop=getTrueBool();
   }
 }
 
@@ -345,7 +403,7 @@ Biens* Agence::searchGood() {
   int id;
 
   std::cout << "Quel est l'identifiant du bien ?" << '\n';
-  std::cin >> id;
+  id=getInt();
 
   std::map<Biens*,std::vector<Client_acheteur> >::iterator iter;
   for (iter = goods_map.begin(); iter != goods_map.end(); iter++) {
@@ -353,8 +411,8 @@ Biens* Agence::searchGood() {
     if(courant->getNum()==id) {
       return courant;
     }
-
-}
+  }
+  std::cout << "Aucun bien trouvé." << '\n';
 }
 
 void Agence::recherche() {
@@ -371,42 +429,56 @@ void Agence::recherche() {
     bool balcon;
     bool jardin;
     bool constructible;
+    int ok=0;
 
     std::cout << "Quel prix maximum ? ?" << '\n';
-    std::cin >> prix;
+    prix=getInt();
     std::cout << "quel type de biens ? " << '\n';
-    std::cout << "1: Locaux \n2: Maison \n3: Terrain \n4: Appartement" << '\n';
-    std::cin >> type;
+
+
+    while(ok==0){
+        std::cout << "Quel type de biens ?" << '\n';
+        std::cout << "1: Locaux \n2: Maison \n3: Terrain \n4: Appartement" << '\n';
+        type=getInt();
+        if(type>=0 && type<=4){
+          ok=1;
+        }
+        else{
+          std::cout << "Veuillez entrer un chiffre entre 1 et 4." << '\n';
+        }
+      }
+
+
     switch (type) {
         case 1: {
                 std::cout << "Une piece pour stocker ? 0 --> non 1 --> oui " << '\n';
-                std::cin >> stock;
+                stock=getTrueBool();
               } break;
 
         case 2:{
                 std::cout << "voulez-vous un garage ? 0 --> non 1--> oui" << '\n';
-                std::cin >> garage;
+                garage=getTrueBool();
                 std::cout << "voulez-vous un jardin ? 0 --> non 1--> oui" << '\n';
-                std::cin >> jardin;
+                jardin=getTrueBool();
                 std::cout << "voulez-vous une piscine ? 0 --> non 1--> oui" << '\n';
-                std::cin >> piscine;
+                piscine=getTrueBool();
               } break;
 
         case 3:{
                 std::cout << "constructible 0 --> non 1--> oui?" << '\n';
-                std::cin >> constructible;
+                constructible=getTrueBool();
               } break;
         case 4:{
                 std::cout << "combien de piece ?" << '\n';
-                std::cin >> nb_pieces;
+                nb_pieces=getInt();
                 std::cout << "A quel etage ?" << '\n';
-                std::cin >> etage;
+                etage=getInt();
                 std::cout << "voulez-vous un garage ? 0 --> non 1--> oui" << '\n';
-                std::cin >> garage;
+                garage=getTrueBool();
                 std::cout << "voulez-vous une cave ? 0 --> non 1--> oui" << '\n';
-                std::cin >> cave;
+                cave=getTrueBool();
                 std::cout << "voulez-vous un balcon ? 0 --> non 1--> oui" << '\n';
-                std::cin >> balcon;
+                balcon=getTrueBool();
               } break;
       }
 
@@ -455,7 +527,7 @@ void Agence::save() {
     ofstream goodsFile;
     goodsFile.open("Biens.txt");
     if (goodsFile.is_open()) {
-        for (auto&& [first,second] : goods_map) {
+        for (auto& [first,second] : goods_map) { // goods_map est un conteneur qui prends comme clé un pointeur de biens et en valeur un client_acheteur
             first->save(goodsFile);
             goodsFile << endl;
         }
@@ -466,7 +538,7 @@ void Agence::save() {
     ofstream sellersFile;
     sellersFile.open("Vendeurs.txt");
     if (sellersFile.is_open()) {
-        for (auto& seller : sellers) {
+        for (auto& seller : sellers) { // sellers est un vecteur de Client_vendeur
             seller->save(sellersFile);
             sellersFile << endl;
         }
@@ -476,7 +548,7 @@ void Agence::save() {
     ofstream buyersFile;
     buyersFile.open("Acheteurs.txt");
     if (buyersFile.is_open()) {
-        for (auto& buyer : buyers){
+        for (auto& buyer : buyers){ // Buyers est un vector de Vlient_acheteur
             buyer->save(buyersFile);
             buyersFile << endl;
         }
@@ -486,10 +558,20 @@ void Agence::save() {
 
 
 void Agence::load_fichier() {
-
     int nom_fichier;
-    std::cout << "quel fichier voulez vous ? 1: biens.txt / 2 : acheteurs.txt / 3: vendeurs.txt" << '\n';
-    std::cin >> nom_fichier;
+    int ok=0;
+
+    while(ok==0){
+      std::cout << "Quel fichier voulez vous ? 1: biens.txt / 2 : acheteurs.txt / 3: vendeurs.txt" << '\n';
+      nom_fichier=getInt();
+      if(nom_fichier>0 && nom_fichier<4){
+        ok=1;
+      }
+      else{
+        std::cout << "Veuillez entrer un nombre entre 1 et 3." << '\n';
+      }
+    }
+
     switch(nom_fichier) {
         case 1 : load_biens();break;
         case 2 : load_acheteurs();break;
@@ -499,7 +581,7 @@ void Agence::load_fichier() {
 
 
 void Agence::load_biens() {
-    ifstream fInFile("biens.txt");
+    ifstream fInFile("Biens.txt");
     char c = fInFile.get();
         while (fInFile.good()) {
             std::cout << c;
@@ -508,7 +590,7 @@ void Agence::load_biens() {
 }
 
 void Agence::load_acheteurs() {
-    ifstream fInFile("biens.txt");
+    ifstream fInFile("Acheteurs.txt");
     char c = fInFile.get();
         while (fInFile.good()) {
             std::cout << c;
@@ -517,7 +599,7 @@ void Agence::load_acheteurs() {
 }
 
 void Agence::load_vendeurs() {
-    ifstream fInFile("biens.txt");
+    ifstream fInFile("Vendeurs.txt");
     char c = fInFile.get();
         while (fInFile.good()) {
             std::cout << c;

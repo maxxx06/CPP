@@ -12,6 +12,11 @@ Client_vendeur::Client_vendeur(std::string _nom_client, std::string _adresse_cli
 
 }
 
+// DESTRUCTEUR //
+
+Client_vendeur::~Client_vendeur() {
+  liste_biens.clear();
+}
 
 // MODIFICATION DES ATTRIBUTS (vector) //
 
